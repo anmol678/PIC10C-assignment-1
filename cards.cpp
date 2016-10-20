@@ -195,9 +195,71 @@ bool Card::operator < (Card card2) const {
 /* *************************************************
    Hand class
    ************************************************* */
-// Implemente the member functions of the Hand class here.
 
+//Default constructor initializes a random card to the hand of cards
+Hand::Hand() {
+    Card newCard;
+    cards.push_back(newCard);
+}
 
+//Accessor: Prints the last card stored in the hand of cards
+void Hand::printLast() const {
+    int i = cards.size() - 1;
+    std::cout << cards[i].get_spanish_rank()+" de "+cards[i].get_spanish_suit()
+    << "("+cards[i].get_english_rank()+" of "+cards[i].get_english_suit()+").\n"
+}
+
+//Accessor: Finds the total value of all the cards in a hand
+double Hand::sum() const {
+    double sum = 0.0;
+    
+    for (int i = 0; i < cards.size(); i++) {
+        sum += cards[i].get_value();
+    }
+    return sum;
+}
+
+//Accessor: Compares the values of two Hand objects and returns true if second hand has a higher total value
+bool Hand::operator < (Hand hand2) const {
+    double sum1 = sum();
+    double sum2 = hand2.sum();
+    return sum1 < sum2;
+}
+
+//Mutator: Adds a randomly generated card to the hand
+void Hand::drawCard() {
+    Card newCard;
+    cards.push_back(newCard);
+}
+
+//Mutator: Resets the hand for a new game
+void Hand::resetHand() {
+    cards.resize(0);
+}
+
+//Mutator: Sorts the cards in the vector in ascending order based on rank
+void Hand::sortHand() {
+    sort(cards.begin(),cards.end());
+}
+
+//Prints all the cards in the hand (stored in the vector of cards)
+void Hand::print() {
+    sortHand();//The cards are sorted first
+    for (int i = 0; i < cards.size(); i++) {
+        std::cout << cards[i].get_spanish_rank()+" de "+cards[i].get_spanish_suit()
+        << "("+cards[i].get_english_rank()+" of "+cards[i].get_english_suit()+").\n";
+    }
+}
+
+//Writes all the cards in the hand in the log file
+void Hand::printLog(std::ofstream& fout) {
+    sortHand();//The cards are sorted first
+    
+    for (int i = 0; i < cards.size(); i++) {
+        fout << cards[i].get_spanish_rank()+" de "+cards[i].get_spanish_suit()
+        << "("+cards[i].get_english_rank()+" of "+cards[i].get_english_suit()+").\n";
+    }
+}
 
 /* *************************************************
    Player class
