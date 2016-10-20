@@ -193,8 +193,8 @@ bool Card::operator < (Card card2) const {
 }
 
 /* *************************************************
-   Hand class
-   ************************************************* */
+ Hand class
+ ************************************************* */
 
 //Default constructor initializes a random card to the hand of cards
 Hand::Hand() {
@@ -206,7 +206,7 @@ Hand::Hand() {
 void Hand::printLast() const {
     int i = cards.size() - 1;
     std::cout << cards[i].get_spanish_rank()+" de "+cards[i].get_spanish_suit()
-    << "("+cards[i].get_english_rank()+" of "+cards[i].get_english_suit()+").\n"
+    << "("+cards[i].get_english_rank()+" of "+cards[i].get_english_suit()+").\n";
 }
 
 //Accessor: Finds the total value of all the cards in a hand
@@ -230,6 +230,7 @@ bool Hand::operator < (Hand hand2) const {
 void Hand::drawCard() {
     Card newCard;
     cards.push_back(newCard);
+    std::cout << "Card Drawn\n";
 }
 
 //Mutator: Resets the hand for a new game
@@ -262,6 +263,6 @@ void Hand::printLog(std::ofstream& fout) {
 }
 
 /* *************************************************
-   Player class
-   ************************************************* */
+ Player class
+ ************************************************* */
 // Implemente the member functions of the Player class here.
