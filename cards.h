@@ -59,7 +59,7 @@ private:
 };
 
 
-class Hand { //A vector of Cards
+class Hand {
 public:
     //Constructor
     //Initializes hand of cards with a random card
@@ -87,6 +87,7 @@ public:
     void printLog(std::ofstream& fout);
     
 private:
+    //A vector of Cards
     std::vector<Card> cards;
 };
 
