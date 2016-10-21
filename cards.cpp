@@ -264,4 +264,18 @@ void Hand::printLog(std::ofstream& fout) {
 /* *************************************************
    Player class
    ************************************************* */
-// Implemente the member functions of the Player class here.
+
+//Default constructor intializes m amount of money
+Player::Player(int m) {
+    money = m;
+}
+
+//Accessor: Returns the amount of money
+int Player::getMoney() const {
+    return money;
+}
+
+//Accessor: Updates money player has based on bets won or lost
+void Player::updateMoney(int change) {
+    money += change;
+}
