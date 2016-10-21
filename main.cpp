@@ -99,6 +99,30 @@ int main() {
             handPlayer.printLast();
         }
     } while (choice == 'y');//This loop iterates only if the player opts to draw another card. Otherwise, since the player's turn is over once the dealer draws his cards and values of the two hands are compared the game ends.
+    //The player cannot play anymore if he runs out of money
+    if (player.getMoney() == 0) {
+        cout << endl << "You have $0. GAME OVER!\nCome back when you have more money.\n" << endl << "Bye!";
+        
+        fout << "\n-----------------------------------------------";
+        fout.close();
+        
+        break;
+    }
+    
+    //The player cannot play anymore if the dealer looses 900 or more
+    else if (player.getMoney() >= 1000) {
+        cout << endl << "Congratulations. You beat the casino!\n" << endl << "Bye!";
+        
+        fout << "\n-----------------------------------------------";
+        fout.close();
+        
+        break;
+    }
+    
+    //If none of the above scenarios apply a new game begins
+    else {
+        continue;
+    }
     
     return 0;
 }
