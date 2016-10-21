@@ -15,6 +15,9 @@
 
 int main() {
     
+    ofstream fout;
+    fout.open("gamelog.txt"); //Creates gamelog.txt file
+    
     Player player = Player(100); //Player object initialized with amount 100
     int count = 0; //Keeps track of the number of games played
     
@@ -41,6 +44,11 @@ int main() {
         }
         
         else {
+            fout << "\n-----------------------------------------------\n";
+            
+            fout << "\nGame number: " << count << setw(20) << right << "Money left: $" << player.getMoney()
+            << "\nBet: " << bet << "\n"; //Certain details are written in the gamelog file
+
             
             do {
                 cout <<"\nYour cards:\n";
@@ -65,6 +73,15 @@ int main() {
                         cout << "The dealer's total is " << handDealer.sum() << ".\n";
                     }
                     
+                    //Other details about the game are added to the gamelog file
+                    fout << "\nYour cards:\n";
+                    handPlayer.printLog(fout);
+                    fout << "Your total: " << handPlayer.sum() << ".\n";
+                    
+                    fout << "\nDealer's cards: \n";
+                    handDealer.printLog(fout);
+                    fout << "Dealer's total is " << handDealer.sum() << ".\n";
+
                     //The total values of the dealer's hand and the player's hand are compared
                     //The player loses the bet if he busts
                     if (handPlayer.sum() > 7.5) {
@@ -111,13 +128,18 @@ int main() {
             if (player.getMoney() == 0) {
                 cout << "\nYou have $0. GAME OVER!\nCome back when you have more money.\n\nBye!";
                 
+                fout << "\n-----------------------------------------------";
+                fout.close();
+
                 break;
             }
             
             //The player cannot play anymore if the dealer looses 900 or more
             else if (player.getMoney() >= 1000) {
-                cout << "\n"Congratulations. You beat the casino!\n\nBye!";
+                cout << "\nCongratulations. You beat the casino!\n\nBye!";
                 
+                fout << "\n-----------------------------------------------";
+                fout.close();
                 break;
             }
             
