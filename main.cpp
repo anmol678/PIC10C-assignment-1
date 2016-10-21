@@ -46,6 +46,50 @@ int main() {
             cout << "\nDealer's cards: \n";
             handDealer.print();
             cout << "The dealer's total is " << handDealer.sum() << ".\n";
+            
+            while (handDealer.sum() < 5.5){//The dealer continues to draw cards till the total value <= 5.5
+                handDealer.drawCard();
+                cout << "\nNew card:\n";
+                handDealer.printLast();//The new card drawn is displayed
+                
+                cout << "\nDealer's cards: \n";
+                handDealer.print();
+                cout << "The dealer's total is " << handDealer.sum() << ".\n";
+            }
+            
+            //The total values of the dealer's hand and the player's hand are compared
+            //The player loses the bet if he busts
+            if (handPlayer.sum() > 7.5) {
+                cout << "\nToo bad. You lose " << bet << ".\n";
+                player.updateMoney(-bet);
+            }
+            
+            //The player wins the bet if he doesn't bust but the dealer busts
+            else if (handPlayer.sum() <= 7.5 && handDealer.sum() > 7.5) {
+                cout << "\nYou win " << bet << ".\n";
+                player.updateMoney(bet);
+            }
+            
+            //It's a tie if both the player and the dealer don't bust and the values are equal
+            else if (handPlayer.sum() == handDealer.sum()) {
+                cout << "\nIts a tie.\n";
+            }
+            
+            //If both the player and the dealer do not bust:
+            else {
+                
+                //The player wins the bet if he closer to 7.5 than the dealer is
+                if (handDealer < handPlayer) {
+                    cout << "\nYou win " << bet << ".\n";
+                    player.updateMoney(bet);
+                }
+                
+                //The player loses the bet if the dealer is closer to 7.5 than he is
+                else {
+                    cout << "\nToo bad. You lose " << bet << ".\n";
+                    player.updateMoney(-bet);
+                }
+            }
         }
         
         //If the player chooses to draw another card:
