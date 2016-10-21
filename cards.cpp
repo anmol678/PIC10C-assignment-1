@@ -205,8 +205,9 @@ Hand::Hand() {
 //Accessor: Prints the last card stored in the hand of cards
 void Hand::printLast() const {
     int i = cards.size() - 1;
-    std::cout << cards[i].get_spanish_rank()+" de "+cards[i].get_spanish_suit()
-    << "("+cards[i].get_english_rank()+" of "+cards[i].get_english_suit()+").\n"
+    std::cout << "\t" << std::setw(20) << std::left << cards[i].get_spanish_rank()+" de "+cards[i].get_spanish_suit()
+    << std::setw(20) << std::left << "("+cards[i].get_english_rank()+" of "+cards[i].get_english_suit()+")."
+    << std::endl;
 }
 
 //Accessor: Finds the total value of all the cards in a hand
@@ -246,8 +247,9 @@ void Hand::sortHand() {
 void Hand::print() {
     sortHand();//The cards are sorted first
     for (int i = 0; i < cards.size(); i++) {
-        std::cout << cards[i].get_spanish_rank()+" de "+cards[i].get_spanish_suit()
-        << "("+cards[i].get_english_rank()+" of "+cards[i].get_english_suit()+").\n";
+        std::cout << "\t" << std::setw(20) << std::left << cards[i].get_spanish_rank()+" de "+cards[i].get_spanish_suit()
+        << std::setw(20) << std::left << "("+cards[i].get_english_rank()+" of "+cards[i].get_english_suit()+")."
+        << std::endl;
     }
 }
 
@@ -256,8 +258,9 @@ void Hand::printLog(std::ofstream& fout) {
     sortHand();//The cards are sorted first
     
     for (int i = 0; i < cards.size(); i++) {
-        fout << cards[i].get_spanish_rank()+" de "+cards[i].get_spanish_suit()
-        << "("+cards[i].get_english_rank()+" of "+cards[i].get_english_suit()+").\n";
+        fout << "\t" << std::setw(20) << std::left << cards[i].get_spanish_rank()+" de "+cards[i].get_spanish_suit()
+        << std::setw(20) << std::left << "("+cards[i].get_english_rank()+" of "+cards[i].get_english_suit()+")."
+        << std::endl;
     }
 }
 
