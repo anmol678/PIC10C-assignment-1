@@ -13,6 +13,8 @@
 #include <cstdlib>
 #include "cards.h"
 
+using namespace std;
+
 int main() {
     
     ofstream fout;
