@@ -1,15 +1,9 @@
 # assignment-1
 A C++ implementation of the card game 'siete y medio' also known as seven and a half. The goal of the game is to get the cards whose total value comes to 7.5 without going over it
 
-Files in the repositary: cards.cpp
-			 
-                         cards.h
-			
-                         main.cpp
+Files in the repositary: cards.cpp, cards.h, main.cpp
 
-Author: Anmol Jain
-	
-        October 20, 2016
+Author: Anmol Jain (October 20, 2016)
 
 Attributes: cards.h - contains the Card, Hand and Player classed declarations.
 	    cards.cpp - contains the implementation of Card, Hand and Player classes.
